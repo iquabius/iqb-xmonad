@@ -1,14 +1,13 @@
--- minimal Ubuntu config file: ~/.xmonad/xmonad.hs
 import XMonad
 import XMonad.Hooks.DynamicLog
 
-myBlue   = "#0080FF"
-myRed    = "#FF4A36"
+myGreen = "#859900"
 
 -- Define custom Pretty Printing option
 myXmobarPP = xmobarPP
-  { ppCurrent = xmobarColor myBlue "" . wrap "[" "]" -- currently focused workspace
-  , ppTitle   = xmobarColor myRed ""                 -- title of currently focused program
+  { ppCurrent = xmobarColor myGreen "" . wrap "[" "]" -- currently focused workspace
+  , ppTitle   = xmobarColor myGreen ""                -- title of currently focused program
+  , ppSep =  "<fc=#839496> : </fc>"                   -- Separators in xmobar
   }
 
 -- Function to create the keyboard shortcut to show and hide the bar.
@@ -19,5 +18,7 @@ myConfig = def
   , terminal    = "xfce4-terminal" -- for Mod + Shift + Enter
   }
 
+myStatusBar = "xmobar /home/iquabius/.xmonad/xmobar.conf"
+
 -- https://hackage.haskell.org/package/xmonad-contrib-0.15/docs/XMonad-Hooks-DynamicLog.html#v:statusBar
-main = xmonad =<< statusBar "xmobar" myXmobarPP xmobarToggle myConfig
+main = xmonad =<< statusBar myStatusBar myXmobarPP xmobarToggle myConfig
