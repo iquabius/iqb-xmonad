@@ -1,0 +1,13 @@
+#+TITLE: My XMonad configuration
+
+** XMonad Installation
+
+  [[https://xmonadhaskell.wordpress.com/2018/10/22/xmonad-ubuntu-18-04-install/][Install from source using Stack.]]
+
+** Required Applications
+
+*** xfce4-terminal
+
+    #+BEGIN_SRC fish
+    apt install -y xfce4-terminal
+    #+END_SRC
