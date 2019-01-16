@@ -1,5 +1,19 @@
 import XMonad
 import XMonad.Hooks.DynamicLog (ppCurrent, ppTitle, ppSep, statusBar, wrap, xmobarColor, xmobarPP)
+import XMonad.Util.EZConfig (additionalKeysP)
+
+myTerminal = "xfce4-terminal"
+
+----------------------------------------------------------------------------------------------
+---KEYBINDINGS
+----------------------------------------------------------------------------------------------
+myKeys =
+  [ ("M-q",               spawn "xmonad --restart")                       -- Restart XMonad
+  , ("M-C-q",             spawn "xmonad --recompile && xmonad --restart") -- Rebuild & restart XMonad
+
+  -- Apps
+  , ("M-<Return>",        spawn myTerminal)
+  ]
 
 -- Define custom Pretty Printing option
 myXmobarPP = xmobarPP
@@ -15,8 +29,8 @@ myConfig = def
   { normalBorderColor  = myNormalBorderColor
   , focusedBorderColor = myFocusedBorderColor
   , modMask            = mod4Mask         -- set 'Mod' to windows key
-  , terminal           = "xfce4-terminal" -- for Mod + Shift + Enter
-  }
+  , terminal           = myTerminal       -- for Mod + Shift + Enter
+  } `additionalKeysP` myKeys
 
 myStatusBar = "xmobar /home/iquabius/.xmonad/xmobar.conf"
 
