@@ -5,6 +5,10 @@
   [[https://xmonadhaskell.wordpress.com/2018/10/22/xmonad-ubuntu-18-04-install/][Install from source using Stack.]]
   [[https://xmonadhaskell.wordpress.com/2018/10/22/xmobar-ubuntu-18-04-install/][Install Xmobar using Stack]]
 
+  Copy =xmonad.desktop= to =/usr/share/xsessions/xmonad.desktop= to make XMonad
+  show up in the login screen.
+
+
 ** Required Applications
 
 *** xfce4-terminal
