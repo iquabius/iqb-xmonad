@@ -28,11 +28,26 @@ xmobarToggle (XConfig {modMask = modKey}) = (modKey, xK_b)
 myConfig = def
   { normalBorderColor  = myNormalBorderColor
   , focusedBorderColor = myFocusedBorderColor
-  , modMask            = mod4Mask         -- set 'Mod' to windows key
+  , modMask            = mod4Mask         -- set 'Mod' to super/windows key
   , terminal           = myTerminal       -- for Mod + Shift + Enter
+  , workspaces         = myWorkspaces
   } `additionalKeysP` myKeys
 
 myStatusBar = "xmobar /home/iquabius/.xmonad/xmobar.conf"
+
+----------------------------------------------------------------------------------------------
+-- Workspaces
+----------------------------------------------------------------------------------------------
+
+wsDev   = "dev"
+wsWww   = "www"
+wsEmacs = "emacs"
+wsMedia = "media"
+wsChat  = "chat"
+
+-- myWorkspaces = map show [1..9]
+myWorkspaces :: [String]
+myWorkspaces = [wsDev, wsWww, wsEmacs, wsMedia, wsChat]
 
 -- https://hackage.haskell.org/package/xmonad-contrib-0.15/docs/XMonad-Hooks-DynamicLog.html#v:statusBar
 main = xmonad =<< statusBar myStatusBar myXmobarPP xmobarToggle myConfig
