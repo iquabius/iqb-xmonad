@@ -1,5 +1,8 @@
 import XMonad
+import XMonad.Actions.DynamicProjects (dynamicProjects, Project(..), shiftToProjectPrompt, switchProjectPrompt)
+import XMonad.Actions.SpawnOn (spawnOn)
 import XMonad.Hooks.DynamicLog (ppCurrent, ppTitle, ppSep, statusBar, wrap, xmobarColor, xmobarPP)
+import XMonad.Prompt
 import XMonad.Util.EZConfig (additionalKeysP)
 
 myTerminal = "xfce4-terminal"
@@ -12,7 +15,11 @@ myKeys =
   , ("M-C-q",             spawn "xmonad --recompile && xmonad --restart") -- Rebuild & restart XMonad
 
   -- Apps
-  , ("M-<Return>",        spawn myTerminal)
+  , ("M-<Return>"       , spawn myTerminal)
+
+  -- Workspaces & Projects
+  , ("M-w"              , switchProjectPrompt warmPromptTheme)
+  , ("M-S-w"            , shiftToProjectPrompt warmPromptTheme)
   ]
 
 -- Define custom Pretty Printing option
@@ -49,8 +56,21 @@ wsChat  = "chat"
 myWorkspaces :: [String]
 myWorkspaces = [wsDev, wsWww, wsEmacs, wsMedia, wsChat]
 
+projOlimat = "OliMAT"
+
+projects :: [Project]
+projects =
+  [ Project { projectName      = projOlimat
+            , projectDirectory = "~/Code/Unemat/olimat"
+            , projectStartHook = Just $ do spawnOn projOlimat myTerminal
+                                           spawn "code ~/Code/Unemat/olimat"
+            }
+  ]
+
 -- https://hackage.haskell.org/package/xmonad-contrib-0.15/docs/XMonad-Hooks-DynamicLog.html#v:statusBar
-main = xmonad =<< statusBar myStatusBar myXmobarPP xmobarToggle myConfig
+main = xmonad =<< (statusBar myStatusBar myXmobarPP xmobarToggle
+                   $ dynamicProjects projects myConfig
+                  )
 
 --------------------------------------------------------------------------------
 -- Theme
@@ -58,7 +78,7 @@ main = xmonad =<< statusBar myStatusBar myXmobarPP xmobarToggle myConfig
 
 -- colors
 
--- base03  = "#002b36"
+base03  = "#002b36"
 -- base02  = "#073642"
 -- base01  = "#586e75"
 -- base00  = "#657b83"
@@ -66,7 +86,7 @@ main = xmonad =<< statusBar myStatusBar myXmobarPP xmobarToggle myConfig
 -- base1   = "#93a1a1"
 -- base2   = "#eee8d5"
 -- base3   = "#fdf6e3"
--- yellow  = "#b58900"
+yellow  = "#b58900"
 -- orange  = "#cb4b16"
 -- red     = "#dc322f"
 magenta = "#d33682"
@@ -74,6 +94,9 @@ magenta = "#d33682"
 blue    = "#268bd2"
 -- cyan    = "#2aa198"
 -- green   = "#859900"
+
+-- sizes
+prompt      = 20
 
 myNormalBorderColor     = "#000000"
 myFocusedBorderColor    = active
@@ -84,3 +107,25 @@ active      = blue
 -- focusColor  = blue
 -- unfocusColor = base02
 
+-- run 'xfontsel' to check this format
+-- run 'xlsfonts' to list all fonts
+myFont = "-*-bitstream charter-*-r-*-*-17-*-*-*-*-*-*-*"
+
+-- from XMonad.Prompt
+myPromptTheme = def
+    { font                  = myFont
+    , bgColor               = base03
+    , fgColor               = active
+    , fgHLight              = base03
+    , bgHLight              = active
+    , borderColor           = base03
+    , promptBorderWidth     = 0
+    , height                = prompt
+    , position              = Top
+    }
+
+warmPromptTheme = myPromptTheme
+    { bgColor               = yellow
+    , fgColor               = base03
+    , position              = Top
+    }
