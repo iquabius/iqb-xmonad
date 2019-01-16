@@ -12,3 +12,24 @@
     #+BEGIN_SRC fish
     apt install -y xfce4-terminal
     #+END_SRC
+
+** Keyboard Layout
+
+   https://www.vivaolinux.com.br/topico/Ubuntu-e-Kubuntu/Teclado-para-PTBR
+   #+BEGIN_SRC fish
+   setxkbmap -model intl -layout us
+   gsettings get org.gnome.desktop.input-sources sources
+   # [('xkb', 'us+altgr-intl')]
+   setxkbmap -query
+   # rules:      evdev
+   # model:      pc105
+   # layout:     us
+   # variant:    intl
+   setxkbmap -model abnt2 -layout br
+   setxkbmap -query
+   # rules:      evdev
+   # model:      abnt2
+   # layout:     br
+   #+END_SRC
+
+   To permanently set the keyboard layout, edit =/etc/default/keyboard=
