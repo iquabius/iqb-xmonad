@@ -109,7 +109,9 @@ active      = blue
 
 -- run 'xfontsel' to check this format
 -- run 'xlsfonts' to list all fonts
-myFont = "-*-bitstream charter-*-r-*-*-17-*-*-*-*-*-*-*"
+-- apt install -y xfonts-terminus xfonts-terminus-oblique
+myFont = "-*-terminus-medium-*-*-*-17-*-*-*-*-*-*-*"
+-- myFont = "-*-bitstream charter-*-r-*-*-17-*-*-*-*-*-*-*"
 
 -- from XMonad.Prompt
 myPromptTheme = def
