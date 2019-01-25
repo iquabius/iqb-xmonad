@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# http://blog.ssokolow.com/archives/2011/12/24/getting-your-way-with-setxkbmap/
+#
+# Options (/usr/share/X11/xkb/rules/base.lst)
+#
+# grp                  Switching to another layout
+# grp:alt_shift_toggle Alt+Shift
+# lv3:ralt_switch      Right Alt
+# shift:both_capslock  Both Shift together enable Caps Lock
+setxkbmap \
+    -layout us \
+    -variant altgr-intl \
+    -option ctrl:nocaps
+
+# Start XMonad
+exec xmonad
+
+# Relevant Links
+
+# Example configuration with install-xmonad, start-xmonad, startup-hook scripts
+# https://github.com/zkessin/xmonad-rc/blob/master/start-xmonad
+
+# Some OSs look up for ~/.xmonad/xmonad-session-rc
+# https://unix.stackexchange.com/questions/162448/xsession-and-xinitrc-not-executed-at-login
+# https://unix.stackexchange.com/questions/218367/run-a-command-when-logging-in-with-xmonad
+# https://github.com/vicfryzel/xmonad-config
+
+# For multiple keyboard layouts, set Alt+Shift to toggle between them
+# https://askubuntu.com/a/561596/460581
