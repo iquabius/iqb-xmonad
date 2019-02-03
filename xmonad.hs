@@ -64,7 +64,7 @@ projects =
   [ Project { projectName      = projOlimat
             , projectDirectory = "~/Code/Unemat/olimat"
             , projectStartHook = Just $ do spawnOn projOlimat (myTerminal ++ " -x byobu new -s OliMAT")
-                                           spawn "code ~/Code/Unemat/olimat"
+                                           -- spawn "code ~/Code/Unemat/olimat"
             }
   ]
 
