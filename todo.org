@@ -5,7 +5,7 @@
 - [X] Set up CapsLk to work as Ctrl
 - [ ] Set up something for WiFi (maybe Rofus?)
 - [ ] Notify when battery is low
-- [ ] Run Dropbox at startup
+- [X] Run Dropbox at startup
 - [X] Run MegaSync at startup
 - [ ] Find a way to delay starting dropbox and megasync
 - [ ] Fix SSH thingy

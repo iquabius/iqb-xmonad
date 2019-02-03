@@ -13,6 +13,9 @@ setxkbmap \
     -variant altgr-intl \
     -option ctrl:nocaps
 
+# Start Dropbox
+dropbox start -i &
+
 # TODO: Find a way to delay starting dropbox and megasync
 # Maybe I can run XMonad inside a Gnome session:
 # https://askubuntu.com/a/103058/460581
