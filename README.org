@@ -20,11 +20,19 @@
     sudo apt install -y redshift
     #+END_SRC
 
+*** Rofi
+    A window switcher, Application launcher and dmenu replacement
+
+    #+BEGIN_SRC fish
+    sudo apt install -y rofi
+    #+END_SRC
+
 *** xfce4-terminal
 
     #+BEGIN_SRC fish
     apt install -y xfce4-terminal
     #+END_SRC
+
 
 ** Keyboard Layout
 

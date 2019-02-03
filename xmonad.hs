@@ -6,6 +6,7 @@ import XMonad.Prompt
 import XMonad.Util.EZConfig (additionalKeysP)
 
 myTerminal = "xfce4-terminal"
+myLauncher = "rofi -matching fuzzy -modi combi -show combi -combi-modi drun,run"
 
 ----------------------------------------------------------------------------------------------
 ---KEYBINDINGS
@@ -17,6 +18,7 @@ myKeys =
 
   -- Apps
   , ("M-<Return>"       , spawn myTerminal)
+  , ("M-<Space>"        , spawn myLauncher)
 
   -- Workspaces & Projects
   , ("M-w"              , switchProjectPrompt coolPromptTheme)
