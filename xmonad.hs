@@ -13,6 +13,7 @@ myTerminal = "xfce4-terminal"
 myKeys =
   [ ("M-q",               spawn "xmonad --restart")                       -- Restart XMonad
   , ("M-C-q",             spawn "xmonad --recompile && xmonad --restart") -- Rebuild & restart XMonad
+  , ("M-C-<Tab>"        , sendMessage NextLayout)
 
   -- Apps
   , ("M-<Return>"       , spawn myTerminal)
