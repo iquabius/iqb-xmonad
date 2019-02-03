@@ -6,7 +6,8 @@
 - [ ] Set up something for WiFi (maybe Rofus?)
 - [ ] Notify when battery is low
 - [ ] Run Dropbox at startup
-- [ ] Run MegaSync at startup
+- [X] Run MegaSync at startup
+- [ ] Find a way to delay starting dropbox and megasync
 - [ ] Fix SSH thingy
   - [[https://unix.stackexchange.com/questions/12195/how-to-avoid-being-asked-passphrase-each-time-i-push-to-bitbucket][How to avoid being asked passphrase each time I push to Bitbucket]]
   - [[https://github.com/davidbrewer/xmonad-ubuntu-conf/blob/master/start-xmonad#L118][xmonad-ubuntu-conf-gnome-keyring-daemon]]
