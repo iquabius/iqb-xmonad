@@ -1,7 +1,7 @@
 #+TITLE: TODO List
 #+AUTHOR: Josias Duarte Busiquia
 
-- [ ] Set up redshift
+- [X] Set up redshift
 - [X] Set up CapsLk to work as Ctrl
 - [ ] Set up something for WiFi (maybe Rofus?)
 - [ ] Notify when battery is low
@@ -11,3 +11,6 @@
   - [[https://unix.stackexchange.com/questions/12195/how-to-avoid-being-asked-passphrase-each-time-i-push-to-bitbucket][How to avoid being asked passphrase each time I push to Bitbucket]]
   - [[https://github.com/davidbrewer/xmonad-ubuntu-conf/blob/master/start-xmonad#L118][xmonad-ubuntu-conf-gnome-keyring-daemon]]
   - https://askubuntu.com/a/191490/460581
+
+  When opening VS Code: “The login keyring did not get unlocked when you logged
+  in to your computer.”

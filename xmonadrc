@@ -13,6 +13,10 @@ setxkbmap \
     -variant altgr-intl \
     -option ctrl:nocaps
 
+# Run redshift to remove blue light at night time
+# My eyes are thankful
+redshift &
+
 # Start XMonad
 exec xmonad
 

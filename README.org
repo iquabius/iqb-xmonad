@@ -11,6 +11,15 @@
 
 ** Required Applications
 
+*** Redshift
+    Redshift adjusts the color temperature of your screen according to your
+    surroundings. This may help your eyes hurt less if you are working in front
+    of the screen at night.
+
+    #+BEGIN_SRC fish
+    sudo apt install -y redshift
+    #+END_SRC
+
 *** xfce4-terminal
 
     #+BEGIN_SRC fish
