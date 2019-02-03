@@ -1,5 +1,12 @@
 import XMonad
-import XMonad.Actions.DynamicProjects (dynamicProjects, Project(..), shiftToProjectPrompt, switchProjectPrompt)
+import XMonad.Actions.DynamicProjects
+  ( Project(..)
+  , dynamicProjects
+  , lookupProject
+  , shiftToProjectPrompt
+  , switchProject
+  , switchProjectPrompt
+  )
 import XMonad.Actions.SpawnOn (spawnOn)
 import XMonad.Hooks.DynamicLog (ppCurrent, ppTitle, ppSep, statusBar, wrap, xmobarColor, xmobarPP)
 import XMonad.Prompt
@@ -23,6 +30,7 @@ myKeys =
   -- Workspaces & Projects
   , ("M-w"              , switchProjectPrompt coolPromptTheme)
   , ("M-S-w"            , shiftToProjectPrompt coolPromptTheme)
+  , ("M-o"              , switchProject olimatProject)
   ]
 
 -- Define custom Pretty Printing option
@@ -59,16 +67,18 @@ wsChat  = "chat"
 myWorkspaces :: [String]
 myWorkspaces = [wsDev, wsWww, wsEmacs, wsMedia, wsChat]
 
-projOlimat = "OliMAT"
+olimatProjectName = "OliMAT"
+olimatProject =
+  Project
+    { projectName = olimatProjectName
+    , projectDirectory = "~/Code/Unemat/olimat"
+    , projectStartHook =
+        Just $ do spawnOn olimatProjectName (myTerminal ++ " -x byobu new -s OliMAT")
+                  -- spawn "code ~/Code/Unemat/olimat"
+    }
 
 projects :: [Project]
-projects =
-  [ Project { projectName      = projOlimat
-            , projectDirectory = "~/Code/Unemat/olimat"
-            , projectStartHook = Just $ do spawnOn projOlimat (myTerminal ++ " -x byobu new -s OliMAT")
-                                           -- spawn "code ~/Code/Unemat/olimat"
-            }
-  ]
+projects = [olimatProject]
 
 -- https://hackage.haskell.org/package/xmonad-contrib-0.15/docs/XMonad-Hooks-DynamicLog.html#v:statusBar
 main = xmonad =<< (statusBar myStatusBar myXmobarPP xmobarToggle
